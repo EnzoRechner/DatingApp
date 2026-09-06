@@ -1,6 +1,6 @@
 FirstInsert
 INSERT INTO Users (Id, DisplayName, UserName)
-VALUES ('enzo-id', 'Enzo', 'enzor');
+VALUES ('anne-id', 'Anne', 'annen');
 INSERT INTO Users (Id, DisplayName, UserName)
 VALUES ('rose-id', 'Rose', 'roser');
 INSERT INTO Users (Id, DisplayName, UserName)
