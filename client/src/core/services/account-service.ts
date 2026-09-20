@@ -32,7 +32,7 @@ export class AccountService {
 
 
     setCurrentUser(user: User) {
-        localStorage.setItem('User', JSON.stringify(user));
+        localStorage.setItem('user', JSON.stringify(user));
         this.currentUser.set(user);
     }
 
