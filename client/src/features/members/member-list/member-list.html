@@ -1,1 +1,12 @@
-<p>member-list works!</p>
+@if (showText) {
+    <div class="flex justify-center">This is center 
+    </div>
+    <div class="flex justify-center">
+        <button class="rdp-button_next" (click)="HideText()">Text begone</button>
+    </div>
+}
+@if (!showText) {
+    <div class="flex justify-center">
+        <button (click)="ShowText()">Text be back</button>
+    </div>
+}

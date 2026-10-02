@@ -16,13 +16,13 @@ public class AccountController(AppDbContext context, ITokenService tokenService)
     public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
     {
         if (await EmailExists(registerDto.Email)) return BadRequest("Email taken");
-        
+
         using var hmac = new HMACSHA512();
 
         var user = new AppUser
         {
             DisplayName = registerDto.DisplayName,
-            UserName = registerDto.UserName,
+            Username = registerDto.Username,
             Email = registerDto.Email,
             PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
             PasswordSalt = hmac.Key
@@ -54,6 +54,8 @@ public class AccountController(AppDbContext context, ITokenService tokenService)
 
     private async Task<bool> EmailExists(string email)
     {
-        return await context.Users.AnyAsync(x => x.Email.ToLower() == email.ToLower());
+        return await context.Users.AnyAsync(x => string.Equals(x.Email, email, StringComparison.OrdinalIgnoreCase));
+        // Trying out the string Equals rather than ==
+        // return await context.Users.AnyAsync(x => x.Email.ToLower() == email.ToLower());
     }
 }
